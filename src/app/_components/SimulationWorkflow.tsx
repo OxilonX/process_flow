@@ -12,19 +12,19 @@ const workflowSteps = [
     title: "1. Input Configuration",
     description:
       "Define process burst times, arrival times, and select between Non-Preemptive (SJF) or Preemptive (SRT) scheduling modes.",
-    url: "/images/workflow-input.svg", // Replace with your actual image path
+    url: "/images/data_inpt_ui.png",
   },
   {
     title: "2. Algorithmic Processing",
     description:
       "The engine dynamically calculates the shortest remaining time, determining the optimal execution order and switching context when necessary.",
-    url: "/images/workflow-processing.svg",
+    url: "/images/method_choice_ui.png",
   },
   {
     title: "3. Analysis & Metrics",
     description:
       "Visualize the result via an interactive Gantt chart and review performance metrics like Turnaround Time and Waiting Time.",
-    url: "/images/workflow-analysis.svg",
+    url: "/images/simulation_ui.png",
   },
 ];
 export default function SimulationWorkflow() {
@@ -54,14 +54,14 @@ export default function SimulationWorkflow() {
             <Image
               width={200}
               height={200}
-              src="https://avatar.vercel.sh/shadcn1"
+              src={step.url}
               alt="Event cover"
               className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
               priority
             />
             <CardHeader>
-              <CardTitle></CardTitle>
-              <CardDescription></CardDescription>
+              <CardTitle>{step.title}</CardTitle>
+              <CardDescription>{step.description}</CardDescription>
             </CardHeader>
           </Card>
         ))}
