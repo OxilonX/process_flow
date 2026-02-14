@@ -31,10 +31,7 @@ const workflowSteps = [
 ];
 export default function SimulationWorkflow() {
   return (
-    <section
-      id="ressources-tuto-section"
-      className="container px-6 min-h-screen mb-30"
-    >
+    <section id="guide-section" className="container px-6 min-h-screen mb-30">
       <div className="flex flex-col gap-4 my-10 mb-0 ">
         <div className="flex flex-col items-center gap-1">
           <p className="text-xs text-muted-foreground uppercase tracking-widest">

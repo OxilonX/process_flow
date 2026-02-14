@@ -78,10 +78,7 @@ export default function RessourcesTuto() {
   }
 
   return (
-    <section
-      id="ressources-tuto-section"
-      className="container px-6 min-h-screen"
-    >
+    <section id="resources-section" className="container px-6 min-h-screen">
       <div className="flex flex-col gap-4  my-10 ">
         <div className="flex flex-col items-center gap-1">
           <p className="text-xs text-muted-foreground uppercase tracking-widest">

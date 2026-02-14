@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+//local comps imports
 export default function Hero() {
   return (
     <section
@@ -17,10 +18,10 @@ export default function Hero() {
             the system handles them.
           </p>
         </div>
-        <div className="flex gap-6">
+        <div className="flex items-center gap-6">
           <Button className="text-base px-6  font-sans">Try it out</Button>
-          <Button className="text-base px-6  font-sans" variant="outline">
-            Learn more
+          <Button className="text-base px-6" variant={"outline"}>
+            Learn More
           </Button>
         </div>
       </div>

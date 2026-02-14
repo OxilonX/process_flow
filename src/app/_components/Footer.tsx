@@ -47,14 +47,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-card border-t border-border py-15 ">
+    <footer className="w-full bg-card border-t border-border py-12 ">
       <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-        {/* Copyright */}
         <p className="text-sm text-muted-foreground">
           &copy; {currentYear} Boulmehad Abderrahmane, Inc. All rights reserved.
         </p>
 
-        {/* Custom Social Icons with Specific Hover Colors */}
         <div className="flex items-center gap-5">
           {socialLinks.map((link) => (
             <a
@@ -69,10 +67,9 @@ export default function Footer() {
                 className="size-5 transition-colors duration-300 fill-muted-foreground"
                 style={{
                   // This tells the SVG path to use the color we define on hover
-                  ["--hover-color" as any]: link.hoverColor,
+                  ["--hover-color" as string]: link.hoverColor,
                 }}
               >
-                {/* Clone the SVG to inject the group-hover class logic */}
                 {React.cloneElement(link.svg as React.ReactElement, {
                   className:
                     "w-full h-full fill-current group-hover:!fill-[var(--hover-color)] transition-colors duration-300",
