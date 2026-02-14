@@ -65,7 +65,7 @@ export default function RessourcesTuto() {
       url: "https://youtu.be/VCIVXPoiLpU",
     },
   ];
-  function getYouTubeThumbnail(url: string): string {
+  function getYouTubeThumbnail(url: string): string | null {
     const regExp =
       /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     const match = url.match(regExp);
@@ -76,7 +76,6 @@ export default function RessourcesTuto() {
 
     return null;
   }
-  const imgURL: string = getYouTubeThumbnail("https://youtu.be/WQEzlKTrDIM");
 
   return (
     <section
@@ -106,7 +105,10 @@ export default function RessourcesTuto() {
                 <Card className="relative mx-auto w-full max-w-sm pt-0 h-80">
                   <Image
                     onClick={() => window.open(video.url, "_blank")}
-                    src={getYouTubeThumbnail(video.url)}
+                    src={
+                      getYouTubeThumbnail(video.url) ||
+                      "/processflow_black_logo_no_bg.svg"
+                    }
                     width={200}
                     height={200}
                     alt="Event cover"
