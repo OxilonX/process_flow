@@ -1,0 +1,71 @@
+//next imports
+import Image from "next/image";
+//shadcn comps imports
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+const workflowSteps = [
+  {
+    title: "1. Input Configuration",
+    description:
+      "Define process burst times, arrival times, and select between Non-Preemptive (SJF) or Preemptive (SRT) scheduling modes.",
+    url: "/images/workflow-input.svg", // Replace with your actual image path
+  },
+  {
+    title: "2. Algorithmic Processing",
+    description:
+      "The engine dynamically calculates the shortest remaining time, determining the optimal execution order and switching context when necessary.",
+    url: "/images/workflow-processing.svg",
+  },
+  {
+    title: "3. Analysis & Metrics",
+    description:
+      "Visualize the result via an interactive Gantt chart and review performance metrics like Turnaround Time and Waiting Time.",
+    url: "/images/workflow-analysis.svg",
+  },
+];
+export default function SimulationWorkflow() {
+  return (
+    <section
+      id="ressources-tuto-section"
+      className="container px-6 min-h-screen"
+    >
+      <div className="flex flex-col gap-4 mb-10">
+        <div className="flex flex-col items-center gap-1">
+          <p className="text-xs text-muted-foreground uppercase tracking-widest">
+            how it works
+          </p>
+          <h1 className="text-4xl font-light">Simulation Workflow Guide</h1>
+        </div>
+
+        <p className="text-center self-center text-sm text-muted-foreground max-w-xl">
+          Bridge theory and practice: Analyze Shortest Job First and Shortest
+          Remaining Time scheduling through interactive modeling and curated
+          technical <br />
+          walkthroughs
+        </p>
+      </div>
+      <div className="flex items-center justify-between">
+        {workflowSteps.map((step, index) => (
+          <Card key={index} className="relative mx-auto w-full max-w-sm pt-0">
+            <Image
+              width={200}
+              height={200}
+              src="https://avatar.vercel.sh/shadcn1"
+              alt="Event cover"
+              className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
+              priority
+            />
+            <CardHeader>
+              <CardTitle></CardTitle>
+              <CardDescription></CardDescription>
+            </CardHeader>
+          </Card>
+        ))}
+      </div>
+    </section>
+  );
+}
