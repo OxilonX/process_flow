@@ -66,7 +66,6 @@ export default function Footer() {
               <div
                 className="size-5 transition-colors duration-300 fill-muted-foreground"
                 style={{
-                  // This tells the SVG path to use the color we define on hover
                   ["--hover-color" as string]: link.hoverColor,
                 }}
               >
