@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 //sections imports
 import Hero from "./_components/Hero";
 import RessourcesTuto from "./_components/RessourcesTuto";
