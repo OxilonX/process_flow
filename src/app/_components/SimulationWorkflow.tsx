@@ -1,5 +1,7 @@
 //next imports
 import Image from "next/image";
+//local comps imports
+import SimpleStepper from "./SimpleStepper";
 //shadcn comps imports
 import {
   Card,
@@ -9,19 +11,19 @@ import {
 } from "@/components/ui/card";
 const workflowSteps = [
   {
-    title: "1. Input Configuration",
+    title: "Input Configuration",
     description:
       "Define process burst times, arrival times, and select between Non-Preemptive (SJF) or Preemptive (SRT) scheduling modes.",
     url: "/images/data_inpt_ui.png",
   },
   {
-    title: "2. Algorithmic Processing",
+    title: "Processing Method",
     description:
       "The engine dynamically calculates the shortest remaining time, determining the optimal execution order and switching context when necessary.",
     url: "/images/method_choice_ui.png",
   },
   {
-    title: "3. Analysis & Metrics",
+    title: "Analysis and Simualtion",
     description:
       "Visualize the result via an interactive Gantt chart and review performance metrics like Turnaround Time and Waiting Time.",
     url: "/images/simulation_ui.png",
@@ -31,9 +33,9 @@ export default function SimulationWorkflow() {
   return (
     <section
       id="ressources-tuto-section"
-      className="container px-6 min-h-screen"
+      className="container px-6 min-h-screen mb-30"
     >
-      <div className="flex flex-col gap-4 mb-10">
+      <div className="flex flex-col gap-4 my-10 mb-0 ">
         <div className="flex flex-col items-center gap-1">
           <p className="text-xs text-muted-foreground uppercase tracking-widest">
             how it works
@@ -48,6 +50,9 @@ export default function SimulationWorkflow() {
           walkthroughs
         </p>
       </div>
+      <div className="py-2">
+        <SimpleStepper />
+      </div>
       <div className="flex items-center justify-between">
         {workflowSteps.map((step, index) => (
           <Card key={index} className="relative mx-auto w-full max-w-sm pt-0">
@@ -56,7 +61,7 @@ export default function SimulationWorkflow() {
               height={200}
               src={step.url}
               alt="Event cover"
-              className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
+              className="relative z-20 aspect-video w-full object-cover brightness-100 hover:brightness-130 transition-all duration-300 "
               priority
             />
             <CardHeader>

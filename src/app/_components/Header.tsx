@@ -4,8 +4,13 @@ import Image from "next/image";
 import logo from "../../../public/processflow_black_logo_no_bg.svg";
 export default function Header() {
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 flex justify-center py-6">
-      <nav className="container flex items-center justify-between max-w-2xl px-6 py-2  ">
+    <header className="sticky top-0 left-0 right-0 z-50 flex justify-center py-6 px-4 w-[900px] mx-auto py-0">
+      <nav
+        className="w-full max-w-7xl flex justify-between items-center py-4  rounded-4xl 
+                  bg-foreground/1 backdrop-blur-md 
+                  border border-white/10 
+                  shadow-xl shadow-black/50"
+      >
         <Tabs defaultValue="home" className="w-full">
           <div className="flex items-center justify-center gap-24 w-full">
             <TabsList

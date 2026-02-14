@@ -9,12 +9,6 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/vi/**",
       },
-      {
-        protocol: "https",
-        hostname: "avatar.vercel.sh",
-        port: "",
-        pathname: "/shadcn1",
-      },
     ],
   },
 };

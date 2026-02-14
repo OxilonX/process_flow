@@ -82,7 +82,7 @@ export default function RessourcesTuto() {
       id="ressources-tuto-section"
       className="container px-6 min-h-screen"
     >
-      <div className="flex flex-col gap-4 mb-10">
+      <div className="flex flex-col gap-4  my-10 ">
         <div className="flex flex-col items-center gap-1">
           <p className="text-xs text-muted-foreground uppercase tracking-widest">
             Resources

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 export default function Hero() {
   return (
     <section
-      className="min-h-screen flex items-center justify-center"
+      className="min-h-screen flex items-center justify-center -mt-20"
       id="hero-section"
     >
       <div className="container px-6 flex flex-col items-center gap-8 text-center p-6">
