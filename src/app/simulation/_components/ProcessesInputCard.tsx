@@ -14,7 +14,7 @@ export function ProcessesInputCard() {
     arival: 0,
     burst: 0,
   });
-  const handleAddProcesseClick = (e) => {
+  const handleAddProcesseClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (input.burst === 0) return;
     const nextId =

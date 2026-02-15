@@ -1,11 +1,11 @@
-import type { Task, Processes } from "../types/taskTypes";
+import type { Processes } from "../(types)/simTypes";
 
 export default function shortestRemainingTimeFirstLogic(
   processes: Processes[],
-): Task[] {
-  let workingProcesses = processes.map((p) => ({ ...p, remaining: p.burst }));
+) {
+  const workingProcesses = processes.map((p) => ({ ...p, remaining: p.burst }));
   let timer = 0;
-  let completedTasks: Task[] = [];
+  const completedTasks = [];
   let completedCount = 0;
 
   let lastTaskId: number | null = null;
@@ -14,7 +14,7 @@ export default function shortestRemainingTimeFirstLogic(
   const finishedProcesses = new Array(processes.length).fill(false);
 
   while (completedCount < processes.length) {
-    let availableProcesses = workingProcesses.filter(
+    const availableProcesses = workingProcesses.filter(
       (p) => p.arrival <= timer && !finishedProcesses[p.id],
     );
 
@@ -32,7 +32,7 @@ export default function shortestRemainingTimeFirstLogic(
       continue;
     }
 
-    let nextProcess = availableProcesses.reduce((min, p) =>
+    const nextProcess = availableProcesses.reduce((min, p) =>
       p.remaining < min.remaining ? p : min,
     );
     if (lastTaskId !== nextProcess.id) {

@@ -20,6 +20,10 @@ export default function page() {
         <ModeToggle />
       </div>
       <hr />
+      <div>
+        {/*color picker for single color for all rect */}
+        {/*unit width input + height inpt (auto if > a process.lenght idk how much*/}
+      </div>
     </section>
   );
 }

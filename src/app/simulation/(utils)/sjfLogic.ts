@@ -1,9 +1,8 @@
-import type { Task, Processes } from "../types/taskTypes";
-
-export default function shortestJobFirstLogic(processes: Processes[]): Task[] {
+import type { Processes } from "../(types)/simTypes";
+export default function shortestJobFirstLogic(processes: Processes[]) {
   const readyQueue = [...processes].sort((a, b) => a.arrival - b.arrival);
   let timer = 0;
-  const completedTasks: Task[] = [];
+  const completedTasks = [];
   let completedCount = 0;
 
   const finishedProcesses = new Array(processes.length).fill(false);
