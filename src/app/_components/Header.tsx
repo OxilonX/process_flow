@@ -76,7 +76,7 @@ export default function Header() {
                   Guide
                 </TabsTrigger>
               </Link>
-              <Link href="/simulation">
+              <Link href="/simulation/processes">
                 <TabsTrigger
                   value="simulation"
                   onClick={() => scrollToSection("simulator-app")}

@@ -41,7 +41,7 @@ export function ProcessesTable() {
         {processes.map((process, index) => (
           <TableRow key={index} className="flex items-center justify-between">
             <TableCell className="font-medium">{process.id}</TableCell>
-            <TableCell>{process.arrival} ms</TableCell>
+            <TableCell>{process.arival} ms</TableCell>
             <TableCell>{process.burst} ms</TableCell>
             <TableCell className="group cursor-pointer py-3">
               <Button

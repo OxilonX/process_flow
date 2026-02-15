@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState } from "react";
 
 export type Process = {
   id: number;
-  arrival: number;
+  arival: number;
   burst: number;
 };
 
@@ -23,10 +23,11 @@ export function SimulationProvider({
   children: React.ReactNode;
 }) {
   const [processes, setProcesses] = useState<Process[]>([
-    { id: 1, arrival: 0, burst: 5 },
-    { id: 2, arrival: 2, burst: 3 },
-    { id: 3, arrival: 4, burst: 8 },
-    { id: 4, arrival: 8, burst: 12 },
+    { id: 1, arival: 0, burst: 5 },
+    { id: 2, arival: 2, burst: 3 },
+    { id: 3, arival: 4, burst: 8 },
+    { id: 4, arival: 8, burst: 12 },
+    { id: 5, arival: 12, burst: 4 },
   ]);
 
   const value = { processes, setProcesses };
