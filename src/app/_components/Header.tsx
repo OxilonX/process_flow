@@ -3,6 +3,8 @@
 import { ModeToggle } from "./ModeToggle";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+//next imports
+import Link from "next/link";
 import Image from "next/image";
 //images imports
 import logo from "../../../public/processflow_black_logo_no_bg.svg";
@@ -33,18 +35,22 @@ export default function Header() {
               variant="line"
               className="flex gap-24 items-center bg-transparent border-none"
             >
-              <TabsTrigger
-                value="home"
-                onClick={() => scrollToSection("hero-section")}
-              >
-                Home
-              </TabsTrigger>
-              <TabsTrigger
-                value="resources"
-                onClick={() => scrollToSection("resources-section")}
-              >
-                Resources
-              </TabsTrigger>
+              <Link href="/">
+                <TabsTrigger
+                  value="home"
+                  onClick={() => scrollToSection("hero-section")}
+                >
+                  Home
+                </TabsTrigger>
+              </Link>
+              <Link href="/">
+                <TabsTrigger
+                  value="resources"
+                  onClick={() => scrollToSection("resources-section")}
+                >
+                  Resources
+                </TabsTrigger>
+              </Link>
             </TabsList>
 
             <div className="flex items-center gap-2 px-4 select-none shrink-0">
@@ -62,18 +68,22 @@ export default function Header() {
               variant="line"
               className="flex gap-24 items-center bg-transparent border-none"
             >
-              <TabsTrigger
-                value="guide"
-                onClick={() => scrollToSection("guide-section")}
-              >
-                Guide
-              </TabsTrigger>
-              <TabsTrigger
-                value="simulation"
-                onClick={() => scrollToSection("simulator-app")}
-              >
-                Simulation
-              </TabsTrigger>
+              <Link href="/">
+                <TabsTrigger
+                  value="guide"
+                  onClick={() => scrollToSection("guide-section")}
+                >
+                  Guide
+                </TabsTrigger>
+              </Link>
+              <Link href="/simulation">
+                <TabsTrigger
+                  value="simulation"
+                  onClick={() => scrollToSection("simulator-app")}
+                >
+                  Simulation
+                </TabsTrigger>
+              </Link>
             </TabsList>
           </div>
         </Tabs>
