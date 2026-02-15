@@ -6,10 +6,12 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 //next imports
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 //images imports
 import logo from "../../../public/processflow_black_logo_no_bg.svg";
 
 export default function Header() {
+  const currPath = usePathname();
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -26,6 +28,9 @@ export default function Header() {
     }
   };
 
+  {
+    if (currPath.includes("simulation")) return;
+  }
   return (
     <header className="sticky top-0 left-0 right-0 z-50 flex justify-center py-6 px-4 w-[1000px] mx-auto">
       <nav className="w-full max-w-7xl flex justify-between items-center py-4 rounded-4xl px-4 dark:bg-foreground/5 bg-card-foreground/5 backdrop-blur-md border border-white/10 shadow-xl shadow-black/50">
