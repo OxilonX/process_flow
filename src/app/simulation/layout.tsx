@@ -1,5 +1,7 @@
 //local comps imports
 import SimNavbar from "../_components/SimNavbar";
+//contexts imports
+import { SimulationProvider } from "@/contexts/SimulationContexts";
 export default function SimulationLayout({
   children,
 }: {
@@ -7,10 +9,12 @@ export default function SimulationLayout({
 }) {
   return (
     <div className="flex flex-col gap-8 w-full">
-      <nav className="flex items-center justify-center">
-        <SimNavbar />
-      </nav>
-      <div className="w-full">{children}</div>
+      <SimulationProvider>
+        <nav className="flex items-center justify-center">
+          <SimNavbar />
+        </nav>
+        <div className="w-full">{children}</div>
+      </SimulationProvider>
     </div>
   );
 }
