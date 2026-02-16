@@ -7,7 +7,7 @@ export interface Task {
 }
 export interface Processes {
   id: number;
-  arrival: number;
+  arival: number;
   burst: number;
 }
 export interface methodOptType {
