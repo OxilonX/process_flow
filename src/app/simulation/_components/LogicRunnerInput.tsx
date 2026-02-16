@@ -5,10 +5,17 @@ import { Label } from "@/components/ui/label";
 import { useSimulation } from "@/contexts/SimulationContexts";
 import { methodOptType } from "../(types)/simTypes";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+
 export default function LogicRunnerInput() {
-  const { method, setMethod, processes, setGanntGraphData, ganntGraphData } =
+  const { method, setMethod, processes, setTimeUnitWidth, timeUnitWidth } =
     useSimulation();
+
+  const totalTime =
+    processes.reduce(
+      (acc, task) => Math.max(acc, task.arival + task.burst),
+      0,
+    ) || 1;
+  const maxWidth = totalTime / timeUnitWidth;
   const methods = ["sjf", "srtf", "fcfs"];
   const handleMethodClick = (method: string) => {
     setMethod(method as unknown as methodOptType);
@@ -30,52 +37,22 @@ export default function LogicRunnerInput() {
             </Button>
           ))}
           <li className="pl-4 flex gap-8 items-center">
-            <div>
-              <div className="mx-auto grid w-40 gap-3">
-                <div className="flex items-center justify-between gap-2">
-                  <Label htmlFor="slider-time-unit-width">
-                    Time Unit Width
-                  </Label>
-                  <span className="text-muted-foreground text-sm">
-                    {[ganntGraphData.timeUnitWidth].join(", ")}
-                  </span>
-                </div>
-                <Slider
-                  className="cursor-pointer"
-                  id="slider-time-unit-width"
-                  value={[ganntGraphData.timeUnitWidth]}
-                  onValueChange={(vals) =>
-                    setGanntGraphData((prev) => ({
-                      ...prev,
-                      timeUnitWidth: vals[0],
-                    }))
-                  }
-                  min={20}
-                  max={800}
-                  step={20}
-                />
+            <div className="mx-auto grid w-40 gap-3">
+              <div className="flex items-center justify-between gap-2">
+                <Label htmlFor="slider-time-unit-width">Time Unit Width</Label>
+                <span className="text-muted-foreground text-sm">
+                  {[timeUnitWidth].join(", ")}
+                </span>
               </div>
-            </div>
-            <div className="">
-              <div className="mx-auto grid w-40 gap-3">
-                <div className="flex items-center justify-between gap-2">
-                  <Label htmlFor="slider-height">height</Label>
-                  <span className="text-muted-foreground text-sm">
-                    {[ganntGraphData.height].join(", ")}
-                  </span>
-                </div>
-                <Slider
-                  className="cursor-pointer"
-                  id="slider-height"
-                  value={[ganntGraphData.height]}
-                  onValueChange={(vals) =>
-                    setGanntGraphData((prev) => ({ ...prev, height: vals[0] }))
-                  }
-                  min={processes.length * 20}
-                  max={800}
-                  step={20}
-                />
-              </div>
+              <Slider
+                className="cursor-pointer"
+                id="slider-time-unit-width"
+                value={[timeUnitWidth]}
+                onValueChange={(vals) => setTimeUnitWidth(vals[0])}
+                min={20}
+                max={maxWidth}
+                step={timeUnitWidth}
+              />
             </div>
           </li>
         </ul>

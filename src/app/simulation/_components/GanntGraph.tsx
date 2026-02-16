@@ -1,12 +1,13 @@
-import type { Processes, methodOptType } from "../(types)/simTypes";
+"use client";
 import { useSimulation } from "@/contexts/SimulationContexts";
+import Bar from "./Bar";
 export default function GanntGraph() {
-  const { processes, ganntGraphData } = useSimulation();
+  const { timeUnitWidth, processes } = useSimulation();
   return (
     <div
       style={{
         position: "relative",
-        height: `${ganntGraphData.height}px`,
+        height: `${timeUnitWidth * processes.length}px`,
         width: "1000px",
         border: "1px solid black",
         margin: "auto",
@@ -14,8 +15,10 @@ export default function GanntGraph() {
           linear-gradient(to right, #e0e0e0 1px, transparent 1px),
           linear-gradient(to bottom, #e0e0e0 1px, transparent 1px)
         `,
-        backgroundSize: `${ganntGraphData.timeUnitWidth}px ${ganntGraphData.timeUnitWidth}px`,
+        backgroundSize: `${timeUnitWidth}px ${timeUnitWidth}px`,
       }}
-    ></div>
+    >
+      <Bar />
+    </div>
   );
 }

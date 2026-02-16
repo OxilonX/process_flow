@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 //local comps imports
 import LogicRunnerInput from "../_components/LogicRunnerInput";
+import GanntGraph from "../_components/GanntGraph";
 export default function page() {
   return (
     <section className=" max-w-[1000px] mx-auto  mb-12">
@@ -24,6 +25,7 @@ export default function page() {
       <hr />
       <div>
         <LogicRunnerInput />
+        <GanntGraph />
         {/*color picker for single color for all processes */}
         {/*unit width input + height inpt (auto if > a processes.lenght idk how much*/}
       </div>

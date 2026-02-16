@@ -13,16 +13,8 @@ type SimulationContextType = {
   setProcesses: React.Dispatch<React.SetStateAction<Processes[]>>;
   uiTasks: Task[];
   setUiTasks: React.Dispatch<React.SetStateAction<Task[]>>;
-  ganntGraphData: {
-    timeUnitWidth: number;
-    height: number;
-  };
-  setGanntGraphData: React.Dispatch<
-    React.SetStateAction<{
-      timeUnitWidth: number;
-      height: number;
-    }>
-  >;
+  timeUnitWidth: number;
+  setTimeUnitWidth: React.Dispatch<React.SetStateAction<number>>;
   method: methodOptType;
   setMethod: React.Dispatch<React.SetStateAction<methodOptType>>;
 };
@@ -39,10 +31,6 @@ export function SimulationProvider({
   const [method, setMethod] = useState<methodOptType>(
     "sjf" as unknown as methodOptType,
   );
-  const [ganntGraphData, setGanntGraphData] = useState({
-    timeUnitWidth: 40,
-    height: 200,
-  });
   const [processes, setProcesses] = useState<Processes[]>([
     { id: 1, arival: 0, burst: 5 },
     { id: 2, arival: 2, burst: 3 },
@@ -51,6 +39,7 @@ export function SimulationProvider({
     { id: 5, arival: 12, burst: 4 },
   ]);
   const startingTask = shortestJobFirstLogic(processes);
+  const [timeUnitWidth, setTimeUnitWidth] = useState<number>(20);
   const [uiTasks, setUiTasks] = useState<Task[]>(startingTask);
 
   const value = {
@@ -58,8 +47,8 @@ export function SimulationProvider({
     setProcesses,
     uiTasks,
     setUiTasks,
-    ganntGraphData,
-    setGanntGraphData,
+    timeUnitWidth,
+    setTimeUnitWidth,
     method,
     setMethod,
   };
