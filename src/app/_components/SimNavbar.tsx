@@ -8,7 +8,7 @@ export default function SimNavbar() {
   const pathname = usePathname();
 
   const getActiveTab = () => {
-    if (pathname.includes("/ganntgraph")) return "ganntgraph";
+    if (pathname.includes("/logicrunner")) return "logicrunner";
     return "processes";
   };
   return (
@@ -22,8 +22,8 @@ export default function SimNavbar() {
             <Link href="/simulation/processes">Processes</Link>
           </TabsTrigger>
 
-          <TabsTrigger value="ganntgraph" asChild>
-            <Link href="/simulation/ganntgraph">Gantt Graph</Link>
+          <TabsTrigger value="logicrunner" asChild>
+            <Link href="/simulation/logicrunner">Gantt Graph</Link>
           </TabsTrigger>
         </TabsList>
       </Tabs>

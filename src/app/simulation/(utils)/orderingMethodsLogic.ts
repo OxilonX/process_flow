@@ -17,7 +17,7 @@ export function firstComeFirstServed(processes: Processes[]): Task[] {
   return finalProcesses;
 }
 
-export function shortestJobFirstLogic(processes: Processes[]) {
+export function shortestJobFirstLogic(processes: Processes[]): Task[] {
   const sorted = [...processes].sort((a, b) => a.arival - b.arival);
   let timer = 0;
   const outputProcess = [];

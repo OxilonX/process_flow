@@ -3,6 +3,8 @@ import { ModeToggle } from "@/app/_components/ModeToggle";
 import { StepBack } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+//local comps imports
+import LogicRunnerInput from "../_components/LogicRunnerInput";
 export default function page() {
   return (
     <section className=" max-w-[1000px] mx-auto  mb-12">
@@ -15,14 +17,15 @@ export default function page() {
             </Button>
           </Link>
 
-          <h1 className="text-3xl uppercase font-bold">gannt graph</h1>
+          <h1 className="text-3xl uppercase font-bold">The Logic Runner</h1>
         </div>
         <ModeToggle />
       </div>
       <hr />
       <div>
-        {/*color picker for single color for all rect */}
-        {/*unit width input + height inpt (auto if > a process.lenght idk how much*/}
+        <LogicRunnerInput />
+        {/*color picker for single color for all processes */}
+        {/*unit width input + height inpt (auto if > a processes.lenght idk how much*/}
       </div>
     </section>
   );

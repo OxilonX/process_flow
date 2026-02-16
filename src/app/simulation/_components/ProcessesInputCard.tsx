@@ -87,7 +87,7 @@ export function ProcessesInputCard() {
           variant="outline"
           className="w-full text-base uppercase font-medium py-6"
         >
-          <Link href="/simulation/ganntgraph">start simulation</Link>
+          <Link href="/simulation/logicrunner">start simulation</Link>
         </Button>
       </CardFooter>
     </Card>
