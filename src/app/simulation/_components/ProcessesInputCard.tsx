@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+
 //raect imports
 import { useState } from "react";
 //contexts imports
@@ -14,6 +15,7 @@ export function ProcessesInputCard() {
     arival: 0,
     burst: 0,
   });
+
   const handleAddProcesseClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (input.burst === 0) return;

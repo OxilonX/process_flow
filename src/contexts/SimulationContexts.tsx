@@ -32,11 +32,10 @@ export function SimulationProvider({
     "sjf" as unknown as methodOptType,
   );
   const [processes, setProcesses] = useState<Processes[]>([
-    { id: 1, arival: 0, burst: 5 },
-    { id: 2, arival: 2, burst: 3 },
-    { id: 3, arival: 4, burst: 8 },
-    { id: 4, arival: 8, burst: 12 },
-    { id: 5, arival: 12, burst: 4 },
+    { id: 1, arival: 0, burst: 8 },
+    { id: 2, arival: 1, burst: 4 },
+    { id: 3, arival: 2, burst: 9 },
+    { id: 4, arival: 3, burst: 5 },
   ]);
   const startingTask = shortestJobFirstLogic(processes);
   const [timeUnitWidth, setTimeUnitWidth] = useState<number>(20);

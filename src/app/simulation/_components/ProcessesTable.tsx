@@ -11,13 +11,19 @@ import {
 //contexts imports
 import { useSimulation } from "@/contexts/SimulationContexts";
 //types imports
-import type { Processes } from "../(types)/simTypes";
+import type { Processes, Task } from "../(types)/simTypes";
 export function ProcessesTable() {
-  const { processes, setProcesses } = useSimulation();
-  const handleDeleteProcess = (id: number): Processes[] | undefined => {
-    if (!id) return;
-    setProcesses((prev) => {
-      return prev.filter((process) => process.id != id);
+  const { processes, setProcesses, uiTasks, setUiTasks } = useSimulation();
+  const handleDeleteProcess = (id: number) => {
+    const taskToDelete = uiTasks.find((t) => t.id === id);
+    if (!taskToDelete) return;
+
+    const deletedRow = taskToDelete.row;
+
+    setProcesses((prev) => prev.filter((p) => p.id !== id));
+
+    setUiTasks((prevTasks) => {
+      return prevTasks.filter((task) => task.id !== id);
     });
   };
   return (

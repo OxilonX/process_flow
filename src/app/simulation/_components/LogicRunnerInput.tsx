@@ -3,23 +3,47 @@
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { useSimulation } from "@/contexts/SimulationContexts";
-import { methodOptType } from "../(types)/simTypes";
+import { methodOptType, Processes } from "../(types)/simTypes";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 
 export default function LogicRunnerInput() {
-  const { method, setMethod, processes, setTimeUnitWidth, timeUnitWidth } =
-    useSimulation();
+  const {
+    method,
+    setMethod,
+    processes,
+    setTimeUnitWidth,
+    timeUnitWidth,
+    uiTasks,
+  } = useSimulation();
+  const handleMaxWidthChange = (tasks: Processes[]): number => {
+    if (tasks.length === 0) return 1;
+    const sortedTasks = [...tasks].sort((a, b) => a.arival - b.arival);
+    const totalBurstTime = sortedTasks.reduce((acc, task) => {
+      return acc + task.burst;
+    }, 0);
+    const totalIdleTime = sortedTasks.reduce((acc, currentTask, i, array) => {
+      const nextTask = array[i + 1];
+      if (!nextTask) return acc;
+      const gap = nextTask.arival - (currentTask.arival + currentTask.burst);
+      return acc + Math.max(0, gap);
+    }, 0);
+    return sortedTasks[0].arival + totalBurstTime + totalIdleTime;
+  };
+  const totalTime = handleMaxWidthChange(processes);
+  const CURRENT_WIDTH = 1000;
+  const [maxWidth, setMaxWidth] = useState(CURRENT_WIDTH / totalTime);
 
-  const totalTime =
-    processes.reduce(
-      (acc, task) => Math.max(acc, task.arival + task.burst),
-      0,
-    ) || 1;
-  const maxWidth = totalTime / timeUnitWidth;
   const methods = ["sjf", "srtf", "fcfs"];
+  const handleRetryClick = () => {};
   const handleMethodClick = (method: string) => {
     setMethod(method as unknown as methodOptType);
   };
+  useEffect(() => {
+    const totalTime = handleMaxWidthChange(processes);
+    setTimeUnitWidth(CURRENT_WIDTH / totalTime);
+  }, [uiTasks.length, processes.length]);
+
   return (
     <div>
       <div className="flex items-center justify-between gap-4 px-6 py-4">
@@ -47,16 +71,20 @@ export default function LogicRunnerInput() {
               <Slider
                 className="cursor-pointer"
                 id="slider-time-unit-width"
-                value={[timeUnitWidth]}
+                value={[Math.trunc(timeUnitWidth)]}
                 onValueChange={(vals) => setTimeUnitWidth(vals[0])}
-                min={20}
+                min={maxWidth / 5}
                 max={maxWidth}
-                step={timeUnitWidth}
+                step={maxWidth / 5}
               />
             </div>
           </li>
         </ul>
-        <Button className="px-6 uppercase font-bold" variant={"destructive"}>
+        <Button
+          onClick={handleRetryClick}
+          className="px-6 uppercase font-bold"
+          variant={"destructive"}
+        >
           Retry
         </Button>
       </div>

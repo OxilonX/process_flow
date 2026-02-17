@@ -33,12 +33,17 @@ export default function Bar() {
     return (
       <div>
         {uiTasks.map((task) => {
+          const processIndex = processes.findIndex((p) => p.id === task.id);
+          const now = new Date();
+          if (processIndex === -1) return null;
+
+          const rowNumber = processIndex + 1;
           return (
             <div
-              key={task.id}
+              key={rowNumber}
               style={{
                 position: "absolute",
-                bottom: `${(task.row - 1) * timeUnitWidth}px`,
+                bottom: `${(rowNumber - 1) * timeUnitWidth}px`,
                 left: `${task.start * timeUnitWidth}px`,
                 width: `${task.duration * timeUnitWidth}px`,
                 height: ` ${timeUnitWidth}px`,
@@ -47,9 +52,7 @@ export default function Bar() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                borderRadius: "4px",
                 fontWeight: "bold",
-                border: "1px solid #22a040",
               }}
             >
               P {task.id}
