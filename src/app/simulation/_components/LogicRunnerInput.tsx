@@ -50,15 +50,6 @@ export default function LogicRunnerInput() {
 
       return () => clearTimeout(timer);
     }
-  }, [method]);
-  useEffect(() => {
-    if (retryAnimTrigger) {
-      const timer = setTimeout(() => {
-        setRetryAnimTrigger(false);
-      }, 500);
-
-      return () => clearTimeout(timer);
-    }
   }, [retryAnimTrigger]);
   const handleMethodClick = (method: string) => {
     setMethod(method as unknown as methodOptType);
@@ -70,7 +61,7 @@ export default function LogicRunnerInput() {
 
   return (
     <div>
-      <div className="flex items-center justify-between gap-4 px-6 py-4">
+      <div className="flex items-center justify-between gap-4 py-4 pt-10 mb-8">
         <ul className="flex items-center gap-3">
           {methods.map((meth, index) => (
             <Button

@@ -8,12 +8,12 @@ export default function SimulationLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-8 w-full pt-5">
+    <div className="flex flex-col gap-8 w-full pt-5 min-h-screen">
       <SimulationProvider>
         <nav className="flex items-center justify-center pt-4">
           <SimNavbar />
         </nav>
-        <div className="w-full">{children}</div>
+        <div className="w-full flex-grow">{children}</div>
       </SimulationProvider>
     </div>
   );

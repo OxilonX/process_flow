@@ -4,8 +4,7 @@ import Bar from "./Bar";
 import { useEffect, useState, useCallback } from "react";
 
 export default function GanntGraph() {
-  const { timeUnitWidth, processes, retryAnimTrigger, method } =
-    useSimulation();
+  const { timeUnitWidth, processes, retryAnimTrigger } = useSimulation();
   const CONTAINER_WIDTH = 1050;
 
   const totalUnits = Math.floor(CONTAINER_WIDTH / timeUnitWidth);
@@ -20,9 +19,6 @@ export default function GanntGraph() {
     }, 1000);
   }, [finalWidth]);
 
-  useEffect(() => {
-    handleRetryAnimation();
-  }, [method]);
   useEffect(() => {
     handleRetryAnimation();
   }, [retryAnimTrigger]);
