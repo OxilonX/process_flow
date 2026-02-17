@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 //local comps imports
+import Link from "next/link";
 export default function Hero() {
   return (
     <section
@@ -19,10 +20,20 @@ export default function Hero() {
           </p>
         </div>
         <div className="flex items-center gap-6">
-          <Button className="text-base px-6  font-sans">Try it out</Button>
-          <Button className="text-base px-6" variant={"outline"}>
-            Learn More
-          </Button>
+          <Link href={"/simulation"}>
+            <Button className="text-base px-6  font-sans">Try it out</Button>
+          </Link>
+          <Link
+            href={
+              "https://www.geeksforgeeks.org/operating-systems/cpu-scheduling-in-operating-systems/"
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="text-base px-6" variant={"outline"}>
+              Learn More
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
