@@ -15,6 +15,8 @@ type SimulationContextType = {
   setUiTasks: React.Dispatch<React.SetStateAction<Task[]>>;
   timeUnitWidth: number;
   setTimeUnitWidth: React.Dispatch<React.SetStateAction<number>>;
+  retryAnimTrigger: boolean;
+  setRetryAnimTrigger: React.Dispatch<React.SetStateAction<boolean>>;
   method: methodOptType;
   setMethod: React.Dispatch<React.SetStateAction<methodOptType>>;
 };
@@ -37,6 +39,7 @@ export function SimulationProvider({
     { id: 3, arival: 2, burst: 9 },
     { id: 4, arival: 3, burst: 5 },
   ]);
+  const [retryAnimTrigger, setRetryAnimTrigger] = useState(false);
   const startingTask = shortestJobFirstLogic(processes);
   const [timeUnitWidth, setTimeUnitWidth] = useState<number>(20);
   const [uiTasks, setUiTasks] = useState<Task[]>(startingTask);
@@ -50,6 +53,8 @@ export function SimulationProvider({
     setTimeUnitWidth,
     method,
     setMethod,
+    retryAnimTrigger,
+    setRetryAnimTrigger,
   };
   return (
     <SimulationContext.Provider value={value}>

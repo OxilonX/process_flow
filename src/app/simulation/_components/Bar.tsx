@@ -19,7 +19,6 @@ export default function Bar() {
       } else if ((method as unknown) === "srtf") {
         const newTasks = shortestRemainingTimeFirstLogic(processes);
         setUiTasks(newTasks);
-        console.log(uiTasks);
       } else if ((method as unknown) === "fcfs") {
         const newTasks = firstComeFirstServed(processes);
         setUiTasks(newTasks);
@@ -33,14 +32,12 @@ export default function Bar() {
     return (
       <div>
         {uiTasks.map((task) => {
+          const uniqueId = crypto.randomUUID();
           const processIndex = processes.findIndex((p) => p.id === task.id);
-          const now = new Date();
-          if (processIndex === -1) return null;
-
           const rowNumber = processIndex + 1;
           return (
             <div
-              key={rowNumber}
+              key={uniqueId}
               style={{
                 position: "absolute",
                 bottom: `${(rowNumber - 1) * timeUnitWidth}px`,

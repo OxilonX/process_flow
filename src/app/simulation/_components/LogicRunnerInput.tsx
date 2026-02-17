@@ -15,6 +15,8 @@ export default function LogicRunnerInput() {
     setTimeUnitWidth,
     timeUnitWidth,
     uiTasks,
+    retryAnimTrigger,
+    setRetryAnimTrigger,
   } = useSimulation();
   const handleMaxWidthChange = (tasks: Processes[]): number => {
     if (tasks.length === 0) return 1;
@@ -35,7 +37,29 @@ export default function LogicRunnerInput() {
   const [maxWidth, setMaxWidth] = useState(CURRENT_WIDTH / totalTime);
 
   const methods = ["sjf", "srtf", "fcfs"];
-  const handleRetryClick = () => {};
+
+  const handleRetryClick = () => {
+    setRetryAnimTrigger(true);
+  };
+
+  useEffect(() => {
+    if (retryAnimTrigger) {
+      const timer = setTimeout(() => {
+        setRetryAnimTrigger(false);
+      }, 500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [method]);
+  useEffect(() => {
+    if (retryAnimTrigger) {
+      const timer = setTimeout(() => {
+        setRetryAnimTrigger(false);
+      }, 500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [retryAnimTrigger]);
   const handleMethodClick = (method: string) => {
     setMethod(method as unknown as methodOptType);
   };
@@ -65,7 +89,7 @@ export default function LogicRunnerInput() {
               <div className="flex items-center justify-between gap-2">
                 <Label htmlFor="slider-time-unit-width">Time Unit Width</Label>
                 <span className="text-muted-foreground text-sm">
-                  {[timeUnitWidth].join(", ")}
+                  {Math.trunc(timeUnitWidth)}
                 </span>
               </div>
               <Slider
