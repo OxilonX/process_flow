@@ -31,7 +31,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-background border-t border-border py-10">
+    <footer className="w-full bg-background border-t border-border py-6">
       <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
         <p className="text-sm text-muted-foreground">
           &copy; {currentYear} Boulmehad Abderrahmane, Inc. All rights reserved.
