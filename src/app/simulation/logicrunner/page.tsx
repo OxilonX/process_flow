@@ -8,9 +8,9 @@ import LogicRunnerInput from "../_components/LogicRunnerInput";
 import GanntGraph from "../_components/GanntGraph";
 export default function page() {
   return (
-    <section className=" max-w-[1000px] mx-auto  mb-12">
+    <section className=" max-w-[1000px] mx-auto  mb-12 ">
       <div className="flex items-center justify-between pt-4 pb-4">
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 ">
           <Link href="/">
             <Button className="rounded-full py-4 font-medium">
               <StepBack size={30} />
@@ -23,11 +23,9 @@ export default function page() {
         <ModeToggle />
       </div>
       <hr />
-      <div>
+      <div className=" ">
         <LogicRunnerInput />
         <GanntGraph />
-        {/*color picker for single color for all processes */}
-        {/*unit width input + height inpt (auto if > a processes.lenght idk how much*/}
       </div>
     </section>
   );
