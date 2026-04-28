@@ -9,6 +9,7 @@ export interface Processes {
   id: number;
   arival: number;
   burst: number;
+  completion?: number;
 }
 export interface methodOptType {
   method: string;

@@ -2,18 +2,27 @@ import type { Processes, Task } from "../(types)/simTypes";
 export function firstComeFirstServed(processes: Processes[]): Task[] {
   let timer = 0;
   const finalProcesses: Task[] = [];
+
   const sorted = [...processes].sort((a, b) => a.arival - b.arival);
+
   for (let i = 0; i < sorted.length; i++) {
     const current = sorted[i];
+
+    if (timer < current.arival) {
+      timer = current.arival;
+    }
+
     const outputProcess: Task = {
       id: current.id,
       start: timer,
       duration: current.burst,
-      row: i + 1,
+      row: current.id,
     };
+
     timer = timer + current.burst;
     finalProcesses.push(outputProcess);
   }
+
   return finalProcesses;
 }
 

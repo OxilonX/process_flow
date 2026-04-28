@@ -6,6 +6,7 @@ import Link from "next/link";
 //local comps imports
 import LogicRunnerInput from "../_components/LogicRunnerInput";
 import GanntGraph from "../_components/GanntGraph";
+import { ResultTable } from "@/app/_components/ResultTable";
 export default function page() {
   return (
     <section className=" max-w-[1000px] mx-auto  mb-12 ">
@@ -26,6 +27,7 @@ export default function page() {
       <div className=" ">
         <LogicRunnerInput />
         <GanntGraph />
+        <ResultTable />
       </div>
     </section>
   );

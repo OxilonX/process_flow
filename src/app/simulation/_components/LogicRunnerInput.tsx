@@ -38,6 +38,15 @@ export default function LogicRunnerInput() {
 
   const methods = ["sjf", "srtf", "fcfs"];
 
+  const getMethodLabel = (meth: string) => {
+    const labels: Record<string, string> = {
+      sjf: "SJF",
+      srtf: "SRT",
+      fcfs: "FIFO",
+    };
+    return labels[meth] || meth;
+  };
+
   const handleRetryClick = () => {
     setRetryAnimTrigger(true);
   };
@@ -72,7 +81,7 @@ export default function LogicRunnerInput() {
                 handleMethodClick(meth);
               }}
             >
-              {meth}
+              {getMethodLabel(meth)}
             </Button>
           ))}
           <li className="pl-4 flex gap-8 items-center">
